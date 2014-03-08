@@ -4,6 +4,7 @@ require 'sinatra'
 
 get '/' do
   # form for enter code
+  erb :post, :layout => :layout
 end
 
 get '/:paste' do
@@ -12,8 +13,9 @@ end
 
 post '/paste' do
   #generating address 
-  addr = (('a'..'z').to_a+('A'..'Z').to_a+(0..9).to_a).shuffle[0,8].join
+  paste_id = (('a'..'z').to_a+('A'..'Z').to_a+(0..9).to_a).shuffle[0,8].join
   
   @text = params[:text]
+  
   
 end
