@@ -10,6 +10,7 @@ end
 class Paste
   include Mongoid::Document
   field :id, type: String
+  field :title,   type: String
   field :text,   type: String
   field :private, type: Boolean
 end
@@ -30,11 +31,13 @@ end
 post '/paste' do
   #generating address 
   @paste_id = (('a'..'z').to_a+('A'..'Z').to_a+(0..9).to_a).shuffle[0,8].join
+  @title = params[:title]
   @text = params[:text]
   @private = params[:private]
   paste = Paste.new
-  paste.text = @text
   paste.id = @paste_id
+  paste.title = @title
+  paste.text = @text
   paste.private = @private
   paste.save
   
@@ -42,5 +45,6 @@ post '/paste' do
 end
 
 get '/all' do
+
   
 end
