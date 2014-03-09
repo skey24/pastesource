@@ -1,7 +1,11 @@
-<form method="post" action="/paste">
-	Title <input type="text" name="title" /><br />
-	<textarea name="text"></textarea><br />
-	Private <input type="checkbox" name="private" value="true" /><br />
-	<input type="submit" value="Send">
+<form class="well span8" method="post" action="/paste">
+  <div class="row">
+
+	<label>Title</label><input type="text" name="title" class="form-control" placeholder="Title" /><br />
+	<label>Text</label><textarea name="text" class="form-control" placeholder="Paste here your script"></textarea><br />
+	<label>Private</label>
+		<input type="checkbox" name="private" value="true" /><br />
 	
+	<input type="submit" class="btn btn-default" value="Send">
+	</div>
 </form>

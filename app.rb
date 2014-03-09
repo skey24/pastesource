@@ -21,11 +21,18 @@ get '/' do
   erb :post, :layout => :layout
 end
 
+get '/all' do
+  #Paste.each do |paste|
+    #@pasta = paste.text
+  #end
+end
+
 get '/:id' do
   #show paste
   @paste = Paste.find(params[:id])
-  @text = @paste.text
+  text = @paste.text
   
+    erb :show_paste, :locals => {:paste => text}, :layout => :layout
 end
 
 post '/paste' do
@@ -44,7 +51,4 @@ post '/paste' do
   redirect "/#{@paste_id}"
 end
 
-get '/all' do
 
-  
-end
