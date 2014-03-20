@@ -42,7 +42,12 @@ post '/paste' do
   @private = params[:private]
   paste = Paste.new
   paste.paste = @paste_id
-  paste.title = @title
+  if @title == ""
+    paste.title = "Untitled"
+  else
+    paste.title = @title
+  end
+    
   paste.text = @text
   paste.private = @private
   paste.save
