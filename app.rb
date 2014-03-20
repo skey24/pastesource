@@ -22,9 +22,8 @@ get '/' do
 end
 
 get '/all' do
-  #Paste.each do |paste|
-    #@pasta = paste.text
-  #end
+    @paste = Paste.all.desc('_id').limit(7000)
+    erb :show_all
 end
 
 get '/:id' do
