@@ -9,7 +9,7 @@ end
 
 class Paste
   include Mongoid::Document
-  field :id, type: String
+  field :paste, type: String
   field :title,   type: String
   field :text,   type: String
   field :private, type: Boolean
@@ -22,13 +22,13 @@ get '/' do
 end
 
 get '/all' do
-    @paste = Paste.all.desc('_id').limit(7000)
+    @paste = Paste.all.desc('_id').limit(200)
     erb :show_all
 end
 
 get '/:id' do
   #show paste
-  @paste = Paste.find(params[:id])
+  @paste = Paste.find_by(paste: params[:id])
   text = @paste.text
   
     erb :show_paste, :locals => {:paste => text}, :layout => :layout
@@ -41,7 +41,7 @@ post '/paste' do
   @text = params[:text]
   @private = params[:private]
   paste = Paste.new
-  paste.id = @paste_id
+  paste.paste = @paste_id
   paste.title = @title
   paste.text = @text
   paste.private = @private
