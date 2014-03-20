@@ -1,3 +1,5 @@
+<ul>
 <% @paste.each do |pst| %>
-  <%= pst.id %>
+  <li><a href="/<%= pst.paste %>"><%= pst.title %></a></li>
 <% end %>
+</ul>
