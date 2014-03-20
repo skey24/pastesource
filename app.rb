@@ -22,7 +22,7 @@ get '/' do
 end
 
 get '/all' do
-    @paste = Paste.all.desc('_id').limit(200)
+    @paste = Paste.all.where(private: nil).desc('_id').limit(200)
     erb :show_all
 end
 
