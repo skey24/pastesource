@@ -58,3 +58,10 @@ post '/paste' do
 end
 
 
+helpers do
+  def raw(text)
+    Rack::Utils.escape_html(text)
+  end
+end
+
+
