@@ -12,6 +12,7 @@ class Paste
   field :paste, type: String
   field :title,   type: String
   field :text,   type: String
+  field :syntax,   type: String
   field :private, type: Boolean
 end
 
@@ -30,8 +31,9 @@ get '/:id' do
   #show paste
   @paste = Paste.find_by(paste: params[:id])
   text = @paste.text
+  syntax = @paste.syntax
   
-    erb :show_paste, :locals => {:paste => text}, :layout => :layout
+    erb :show_paste, :locals => {:paste => text, :syntax => syntax}, :layout => :layout
 end
 
 post '/paste' do
@@ -47,7 +49,7 @@ post '/paste' do
   else
     paste.title = @title
   end
-    
+  paste.syntax = params[:syntax]
   paste.text = @text
   paste.private = @private
   paste.save
